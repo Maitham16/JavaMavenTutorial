@@ -1,0 +1,118 @@
+Maven is a powerful project management tool that's used for Java projects. It can be used 
+to build, document, and manage your project's dependencies. Here's an outline of what we'll 
+cover:
+
+    Understanding Maven
+    Project Object Model (POM)
+    Maven Repositories
+    Dependencies and Plugins
+    Maven Life Cycle
+    Building and Running Maven Projects
+    Multi-module Projects
+
+Understanding Maven:
+
+Maven provides developers a complete framework to automate the project's build infrastructure. 
+The name Maven comes from the Yiddish word meaning "accumulator of knowledge", which is what 
+Maven does as well.
+
+Maven addresses two aspects of building software: it describes how software is built and it 
+describes its dependencies. It's based on the concept of a Project Object Model (POM).
+
+Maven can manage a project's build, reporting, and documentation from a central place. 
+It can be used with any programming language and is popularly used with Java projects.
+
+Project Object Model (POM)
+
+The POM is Maven's fundamental unit of work. It's an XML file that resides in the base 
+directory of the project as pom.xml. This file includes all the configuration details 
+related to the project.
+
+A simple pom.xml looks like this:
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.maitham.demo</groupId>
+  <artifactId>demo</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>Maven Quick Start Archetype</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+
+The POM contains details such as the project version, the dependencies your project has on 
+other projects, and the build order.
+
+Maven Repositories:
+
+Maven repositories are directories of packaged JAR files with a pom.xml file. 
+There are three types of Maven repositories: local, central, and remote. The Maven local 
+repository is a local folder that is used to store all your project's dependencies 
+(plugin jars and other files which were downloaded by Maven). By default, the local 
+repository is ~/.m2 directory.
+
+Dependencies and Plugins:
+
+In Maven, dependency management includes the ability to declare a set of dependencies for 
+your project, automatically updating your dependencies, deploying your own artifacts to a 
+repository for use in other projects, and many other features.
+
+Maven plugins are used to:
+
+    Create jar files
+    Create war files
+    Compile code files
+    Unit testing of code
+    Create project documentation
+    Create project reports
+
+A plugin generally provides a set of goals, which can be executed using the following syntax: 
+    mvn [plugin-name]:[goal-name]
+
+Maven Life Cycle:
+
+A Build Life Cycle is a well-defined sequence of phases which define the order in which the 
+goals are to be executed. Here are the main phases of the build lifecycle:
+
+    validate: Validate the project is correct and all necessary information is available.
+    compile: Compile the source code of the project.
+    test: Test the compiled source code using a suitable unit testing framework. 
+            These tests should not require the code be packaged or deployed.
+    package: Take the compiled code and package it in its distributable format, such as a JAR.
+    verify: Run any checks to verify the package is valid and meets quality criteria.
+    install: Install the package into the local repository, for use as a dependency in other 
+                projects locally.
+    deploy: Done in an integration or release environment, copies the final package to the 
+                remote repository for sharing with other developers and projects.
+
+Building and Running Maven Projects:
+
+-Building a project in Maven is straightforward. Once you've defined your POM and your source 
+    code is ready, you can build your project using the following command:
+    
+        mvn compile
+
+-This will build your project (according to the phases described above). 
+    If you want to package your project, you can use:
+
+        mvn package
+
+This will compile your code, execute any tests, and then package your 
+distributable files (like a JAR).
+
+Multi-module Projects
+
+Maven supports building multiple related projects together as a whole. It can be useful when 
+your project grows, and you split it into multiple subprojects, for example, a client-side 
+app, a server-side app, and a shared library. You can define a parent POM that contains 
+common configurations and modules which point to subprojects.
+

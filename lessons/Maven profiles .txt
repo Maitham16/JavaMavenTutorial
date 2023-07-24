@@ -1,0 +1,11 @@
+Maven Profiles: Profiles in Maven provide a set of configuration values that can be used to 
+                set or override default values. Using profiles, you can customize builds for 
+                different environments such as Production or Development environments.
+
+Profiles can be explicitly defined in the POM, inherited from a parent POM, or specified via 
+the command line. Profiles specified on the command line should use the property 
+maven.profile (e.g. -P maven.profile).
+
+You can use these profiles to adjust the build process based on the current environment. 
+For example, you may want to skip running tests when building for development but want to 
+make sure tests are run when building for production.
