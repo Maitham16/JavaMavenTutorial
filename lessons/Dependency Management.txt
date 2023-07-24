@@ -1,0 +1,52 @@
+Dependency Management: One of the main features of Maven is its ability to handle project 
+dependencies. Dependencies are external JAR files that your project needs in order to 
+compile, test, and run your code. These might be third-party libraries, or other projects 
+you're developing that your current project relies on.
+
+In Maven, you specify your project's dependencies in the pom.xml file like this:
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+The groupId, artifactId, and version tags define the exact JAR file that your project
+depends on.
+
+The scope tag is optional and defines the classpath for various build tasks. For example, 
+a dependency with the "test" scope is only available for the test classpath, and is used 
+when running tests.
+
+When you run a Maven command like mvn compile or mvn test, Maven automatically downloads the 
+necessary dependencies from a remote repository (like Maven Central) and stores them in your 
+local repository. If a dependency is already in your local repository, Maven uses that.
+
+For multi-module projects, you can use a <dependencyManagement> section in your parent POM 
+to manage the versions of your dependencies. This makes it easier to keep dependency 
+versions consistent across all modules.
+
+Here's an example:
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+With this setup, you can omit the version when specifying the dependency in your module POMs:
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
